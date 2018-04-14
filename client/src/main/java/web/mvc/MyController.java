@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import web.mvc.service.AppUserService;
+import web.mvc.service.ConversationService;
 import web.mvc.service.UserAuthenticationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +29,8 @@ public class MyController {
     AppUserService appUserService;
     @Autowired
     UserAuthenticationService userAuthenticationService;
+    @Autowired
+    ConversationService conversationService;
 
     @RequestMapping(value = "/")
     public String homePage(ModelMap model) {
@@ -75,6 +79,12 @@ public class MyController {
     public String addConversation(ModelMap model) throws URISyntaxException, JSONException, IOException {
         model.addAttribute("authservice", userAuthenticationService);
         return "addConversation";
+    }
+
+    @RequestMapping(value = "/conversation", method = RequestMethod.POST)
+    public String conversation(@RequestParam  String name, @RequestParam String password) throws URISyntaxException, JSONException, IOException {
+        conversationService.addConversation(name, password);
+        return "conversation";
     }
 
     @RequestMapping(value = "/registrationPage")

@@ -7,25 +7,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table (name = "Conversation")
+@Table (name = "conversation")
 public class Conversation {
+
     @Id
     @GeneratedValue
+    @JsonIgnore
     Integer id;
 
-    @JsonIgnore
+    @Column(name = "name")
+    String name;
+
+    @Column(name = "password")
     String password;
 
-    String user_id; //conversation owner's id
+    @Column(name ="userId")
+    String userId; //conversation owner's id
 
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "Usr_Con",
-            joinColumns = {@JoinColumn(name = "user_id")},
+            joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "conversation_id")}
     )
-
+    @JsonIgnore
     Set<AppUser> appUsers = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.ALL})
@@ -34,7 +40,7 @@ public class Conversation {
             joinColumns = {@JoinColumn(name = "message_id")},
             inverseJoinColumns = {@JoinColumn(name = "conversation_id")}
     )
-
+    @JsonIgnore
     Set<Post> posts = new HashSet<>();
 
 
@@ -50,8 +56,14 @@ public class Conversation {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
 
-    @JsonIgnore
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -61,12 +73,12 @@ public class Conversation {
     }
 
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Set<AppUser> getUsers() {

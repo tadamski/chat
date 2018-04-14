@@ -1,10 +1,4 @@
 
-<%--  Created by IntelliJ IDEA.
-  User: pulpet
-  Date: 14.04.2018
-  Time: 15:06
-  To change this template use File | Settings | File Templates. --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,13 +23,17 @@
 <div id="mainWrapper">
     <div class="form">
 
-<form action="/addConversation" method="post">
+<form action="/conversation" method="post">
+    <div class="input-group input-sm">
+        <label class="input-group-addon">Podaj nazwę konwersacji:</label>
+        <input type="password" class="form-control" id="name" name="name" placeholder="name" required>
+    </div>
     <div class="input-group input-sm">
         <label class="input-group-addon">Podaj hasło do konwersacji:</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Hasło" required>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Hasło" />
     </div>
 
-    <button class="btn btn-secondary" type="submit" onclick="window.location.href='/conversationPage'"> Stwórz </button>
+    <button class="btn btn-secondary" type="submit"> Stwórz </button>
 
 </form>
     </div>
