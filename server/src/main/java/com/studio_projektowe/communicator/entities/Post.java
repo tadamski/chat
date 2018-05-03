@@ -11,18 +11,20 @@ public class Post {
     @GeneratedValue
     Integer id;
 
+    String conversationId;
     String userId;
-    String postBody;
-    Date postDate;
+    String body;
+    Date date;
 
 
     public Post() {
     }
 
-    public Post(String userId, String postBody, Date postDate){
+    public Post(String conversationId, String userId, String postBody, Date postDate){
+        this.conversationId = conversationId;
         this.userId = userId;
-        this.postBody = postBody;
-        this.postDate = postDate;
+        this.body = postBody;
+        this.date = postDate;
     }
 
     public Integer getId() {
@@ -33,6 +35,14 @@ public class Post {
         this.id = id;
     }
 
+    public String getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(String conversationId) {
+        this.conversationId = conversationId;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -41,29 +51,29 @@ public class Post {
         this.userId = userId;
     }
 
-    public String getPostBody() {
-        return postBody;
+    public String getBody() {
+        return body;
     }
 
-    public void setPostBody(String postBody) {
-        this.postBody = postBody;
+    public void setBody(String body) {
+        this.body = body;
     }
 
-    public Date getPostDate() {
-        return postDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
     public String toString() {
         return "{" +
                 "\"id\":\"" + id + '\"' +
-                ",\"body\":\"" + postBody + '\"' +
+                ",\"body\":\"" + body + '\"' +
                 ",\"userId\":\"" + userId + '\"' +
-                ",\"date\":\"" + postDate + "\"" +
+                ",\"date\":\"" + date + "\"" +
                 '}';
     }
 }

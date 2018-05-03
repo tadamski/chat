@@ -16,11 +16,13 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import web.mvc.service.AppUserService;
 import web.mvc.service.ConversationService;
+import web.mvc.service.MessageService;
 import web.mvc.service.UserAuthenticationService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Date;
 
 @Controller
 public class MyController {
@@ -31,6 +33,8 @@ public class MyController {
     UserAuthenticationService userAuthenticationService;
     @Autowired
     ConversationService conversationService;
+    @Autowired
+    MessageService messageService;
 
     @RequestMapping(value = "/")
     public String homePage(ModelMap model) {
@@ -84,6 +88,12 @@ public class MyController {
     @RequestMapping(value = "/conversation", method = RequestMethod.POST)
     public String conversation(@RequestParam  String name, @RequestParam String password) throws URISyntaxException, JSONException, IOException {
         conversationService.addConversation(name, password);
+        return "conversation";
+    }
+
+    @RequestMapping(value = "/newMessage", method = RequestMethod.POST)
+    public String postMessage(@RequestParam String message) throws URISyntaxException, JSONException, IOException {
+        messageService.postMessage("abc", message);
         return "conversation";
     }
 

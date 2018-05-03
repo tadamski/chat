@@ -26,7 +26,7 @@
 <form action="/conversation" method="post">
     <div class="input-group input-sm">
         <label class="input-group-addon">Podaj nazwę konwersacji:</label>
-        <input type="password" class="form-control" id="name" name="name" placeholder="name" required>
+        <input type="text" class="form-control" id="name" name="name" placeholder="name" required>
     </div>
     <div class="input-group input-sm">
         <label class="input-group-addon">Podaj hasło do konwersacji:</label>

@@ -13,16 +13,16 @@ public class Conversation {
     @Id
     @GeneratedValue
     @JsonIgnore
-    Integer id;
+    private Integer id;
 
-    @Column(name = "name")
-    String name;
+    @Column(unique=true, name="name")
+    private String name;
 
     @Column(name = "password")
-    String password;
+    private String password;
 
     @Column(name ="userId")
-    String userId; //conversation owner's id
+    private String userId; //conversation owner's id
 
 
     @ManyToMany(cascade = {CascadeType.ALL})

@@ -47,10 +47,10 @@
 </nav>
 
 
-Logged Site
+<h3>Poprawnie się zalogowałeś!</h3>
+<br>
 
-
-
+<button type="button" class="btn btn-secondary" name="addConversation" onclick="window.location.href='/addConversation'">Dodaj konwersację</button>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
