@@ -22,7 +22,6 @@ public class ConversationService {
 
     public void addConversation(String name, String password) throws JSONException, URISyntaxException {
         String userId = userAuthenticationService.getUsername();
-        System.out.println("IDZIE DODANIE KONWERSACJI O NAZWIE "+name+" Z HASŁEM "+password+" ZALOZONEJ PRZEZ "+userId);
 
         URI uri = new URI("http://localhost:8210/conversation");
 
